@@ -1,0 +1,43 @@
+body {
+  background: #f1f2f6;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  min-height: 100vh;
+}
+h2 {
+  color: #222f3e;
+}
+.colors {
+  margin: 30px 0;
+}
+.color-btn {
+  width: 60px;
+  height: 60px;
+  margin: 0 15px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 2px solid #636e72;
+  transition: transform 0.2s;
+}
+.color-btn:active {
+  transform: scale(0.95);
+}
+.message {
+  font-size: 1.2rem;
+  margin: 18px 0;
+  color: #2d3436;
+}
+button {
+  font-size: 1rem;
+  padding: 8px 24px;
+  background: #00b894;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+button:hover {
+  background: #55efc4;
+}

@@ -2,72 +2,19 @@
 <html lang="hi">
 <head>
   <meta charset="UTF-8">
-  <title>Number Guessing Game</title>
-  <style>
-    body {
-      background: #f1f2f6;
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    h2 {
-      color: #222f3e;
-    }
-    input, button {
-      font-size: 1.2rem;
-      margin: 8px;
-      padding: 6px 14px;
-      border-radius: 6px;
-      border: 1px solid #b2bec3;
-    }
-    button {
-      background: #00b894;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    button:active {
-      background: #55efc4;
-    }
-    .message {
-      font-size: 1.2rem;
-      margin-top: 18px;
-      color: #2d3436;
-    }
-  </style>
+  <title>Color Guessing Game</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h2>Number Guessing Game</h2>
-  <p>1 से 100 के बीच कोई संख्या सोचें और guess करें!</p>
-  <input type="number" id="guess" min="1" max="100" placeholder="अपना guess लिखें">
-  <button onclick="checkGuess()">Guess</button>
-  <button onclick="resetGame()">Restart</button>
+  <h2>Color Guessing Game</h2>
+  <p>सही रंग चुनें: <span id="color-code"></span></p>
+  <div class="colors">
+    <button class="color-btn"></button>
+    <button class="color-btn"></button>
+    <button class="color-btn"></button>
+  </div>
   <div class="message" id="message"></div>
-  <script>
-    let secret = Math.floor(Math.random() * 100) + 1;
-    let attempts = 0;
-    function checkGuess() {
-      const userGuess = Number(document.getElementById('guess').value);
-      attempts++;
-      if(userGuess === secret) {
-        document.getElementById('message').textContent = `बधाई हो! आपने सही guess किया (${secret}) ${attempts} प्रयास में।`;
-      } else if(userGuess < secret) {
-        document.getElementById('message').textContent = "बहुत छोटा! कोई बड़ी संख्या try करें।";
-      } else if(userGuess > secret) {
-        document.getElementById('message').textContent = "बहुत बड़ा! कोई छोटी संख्या try करें।";
-      } else {
-        document.getElementById('message').textContent = "कृपया सही संख्या डालें!";
-      }
-    }
-    function resetGame() {
-      secret = Math.floor(Math.random() * 100) + 1;
-      attempts = 0;
-      document.getElementById('message').textContent = "";
-      document.getElementById('guess').value = "";
-    }
-  </script>
+  <button onclick="startGame()">फिर से खेलें</button>
+  <script src="script.js"></script>
 </body>
 </html>

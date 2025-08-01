@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Test</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            max-width: 500px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Text-to-Speech Test</h1>
+        <textarea id="text-to-read" placeholder="Kuch likhiye aur 'Speak' button dabaiye...">Hello! I am a simple text-to-speech example.</textarea>
+        <button id="speak-button">Speak</button>
+    </div>
+
+    <script>
+        const textarea = document.getElementById('text-to-read');
+        const speakButton = document.getElementById('speak-button');
+
+        // Check if the browser supports SpeechSynthesis
+        if ('speechSynthesis' in window) {
+            const synth = window.speechSynthesis;
+
+            speakButton.addEventListener('click', () => {
+                const text = textarea.value;
+                if (text.trim() !== '') {
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    
+                    // Optional: You can set voice, pitch, and rate here
+                    // utterance.voice = voices[0];
+                    // utterance.pitch = 1; // Range from 0 to 2
+                    // utterance.rate = 1;  // Range from 0.1 to 10
+                    
+                    synth.speak(utterance);
+                }
+            });
+        } else {
+            // Agar browser support nahi karta to user ko message dikhayenge
+            alert("Sorry, your browser doesn't support Text-to-Speech.");
+        }
+    </script>
+
+</body>
+</html>
